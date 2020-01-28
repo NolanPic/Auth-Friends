@@ -25,7 +25,7 @@ const FriendForm = () => {
     const handleChange = e => {
         setFriend({
             ...friend,
-            [e.target.name]: [e.target.value]
+            [e.target.name]: e.target.value
         });
     };
 
@@ -33,15 +33,18 @@ const FriendForm = () => {
         e.preventDefault();
         let endpoint;
         let method;
+
+        const { id, ...rest } = friend;
+
         if(friend.id > 0) {
-            endpoint = `/friends/${friend.id}`;
+            endpoint = `/friends/${id}`;
             method = axiosWithAuth().put;
         }
         else {
             endpoint = '/friends';
             method = axiosWithAuth().post;
         }
-        method(endpoint, friend)
+        method(endpoint, rest)
             .then(res => {
                 setFriend(initialFriend);
                 history.push('/friends');
