@@ -31,8 +31,8 @@ const FriendForm = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        const endpoint;
-        const method;
+        let endpoint;
+        let method;
         if(friend.id > 0) {
             endpoint = `/friends/${friend.id}`;
             method = axiosWithAuth().put;

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
+import { useHistory } from 'react-router-dom';
 
 const Friends = () => {
 
+    const history = useHistory();
     const [ friends, setFriends ] = useState([]);
 
     useEffect(() => {
@@ -13,6 +15,18 @@ const Friends = () => {
             })
             .catch(err => console.warn(err));
     }, []);
+
+    const editFriend = id => {
+        history.push(`/friends/${id}`);
+    };
+
+    const deleteFriend = id => {
+        if(window.confirm('Are you sure you want to remove this friend?')) {
+            axiosWithAuth().delete(`/friends/${id}`);
+            // update state
+            setFriends(friends.filter(friend => friend.id !== id));
+        }
+    };
 
     return (
         <>
@@ -33,7 +47,10 @@ const Friends = () => {
                                 <td>{friend.name}</td>
                                 <td>{friend.age}</td>
                                 <td>{friend.email}</td>
-                                <td><button>Edit</button></td>
+                                <td>
+                                    <button onClick={() => editFriend(friend.id)}>Edit</button>
+                                    <button onClick={() => deleteFriend(friend.id)}>X</button>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
