@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { baseURL } from '../utils/axiosWithAuth';
+import { useHistory } from 'react-router-dom';
 
 const Login = () => {
+
+    const history = useHistory();
 
     const [ credentials, setCredentials ] = useState({
         username: '',
@@ -26,6 +29,7 @@ const Login = () => {
                     // set token
                     localStorage.setItem('token', res.data.payload);
                     setError(null);
+                    history.push('/friends');
                 })
                 .catch(err => {
                     console.warn(err);
