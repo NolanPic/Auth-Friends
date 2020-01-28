@@ -83,6 +83,7 @@ const FriendForm = () => {
                     onChange={handleChange}
                 />
             </label>
+            <button type="submit">Save</button>
         </form>
     );
 };
