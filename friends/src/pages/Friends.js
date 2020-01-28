@@ -16,6 +16,10 @@ const Friends = () => {
             .catch(err => console.warn(err));
     }, []);
 
+    const addFriend = () => {
+        history.push('/friends/0');
+    };
+
     const editFriend = id => {
         history.push(`/friends/${id}`);
     };
@@ -30,7 +34,7 @@ const Friends = () => {
 
     return (
         <>
-            <button>Add</button>
+            <button onClick={addFriend}>Add</button>
             {friends.length ? (
                 <table style={{ width: '100%' }}>
                     <thead>
