@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { baseURL } from '../utils/axiosWithAuth';
 
 const Login = () => {
 
@@ -16,7 +18,12 @@ const Login = () => {
 
     const login = e => {
         e.preventDefault();
-
+        axios.post(`${baseURL}/login`, credentials)
+            .then(res => {
+                // set token
+                localStorage.setItem('token', res.data.payload);
+            })
+            .catch(err => console.warn(err));
     };
 
     return (
