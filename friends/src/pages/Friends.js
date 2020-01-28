@@ -16,6 +16,7 @@ const Friends = () => {
 
     return (
         <>
+            <button>Add</button>
             {friends.length ? (
                 <table style={{ width: '100%' }}>
                     <thead>
@@ -23,6 +24,7 @@ const Friends = () => {
                             <th>Name</th>
                             <th>Age</th>
                             <th>Email</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,6 +33,7 @@ const Friends = () => {
                                 <td>{friend.name}</td>
                                 <td>{friend.age}</td>
                                 <td>{friend.email}</td>
+                                <td><button>Edit</button></td>
                             </tr>
                         ))}
                     </tbody>
