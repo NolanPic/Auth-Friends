@@ -9,6 +9,8 @@ const Login = () => {
         password: ''
     });
 
+    const [error, setError] = useState(null);
+
     const handleChange = e => {
         setCredentials({
             ...credentials,
@@ -18,16 +20,26 @@ const Login = () => {
 
     const login = e => {
         e.preventDefault();
-        axios.post(`${baseURL}/login`, credentials)
-            .then(res => {
-                // set token
-                localStorage.setItem('token', res.data.payload);
-            })
-            .catch(err => console.warn(err));
+        if(credentials.username.length && credentials.password.length) {
+            axios.post(`${baseURL}/login`, credentials)
+                .then(res => {
+                    // set token
+                    localStorage.setItem('token', res.data.payload);
+                    setError(null);
+                })
+                .catch(err => {
+                    console.warn(err);
+                    setError('Invalid credentials.');
+                });
+            }
+        else {
+            setError('Username and password are required.');
+        }
     };
 
     return (
         <form onSubmit={login}>
+            {error && <p>{error}</p>}
             <input
                 type="text"
                 name="username"
