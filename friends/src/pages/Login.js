@@ -41,6 +41,7 @@ const Login = () => {
             }
         else {
             setError('Username and password are required.');
+            setIsLoading(false);
         }
     };
 

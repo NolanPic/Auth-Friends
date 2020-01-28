@@ -40,9 +40,9 @@ Topics:
 [x] In your FriendsList component, rendered with `<ProtectedRoute />`, you will create a list of your friends that you get from the API.
 
 **Adding New Friends**
-* Create a form to collects data for a new friend.
-* Make a POST request to add a friend to the database
-* Each `friend` item that is in the `friends` array should have the following format:
+[x] Create a form to collects data for a new friend.
+[x] Make a POST request to add a friend to the database
+[x] Each `friend` item that is in the `friends` array should have the following format:
 
 ```js
 {
@@ -53,11 +53,11 @@ Topics:
 }
 ```
 
-* If you'd like, you can create multiple "view" components for your routes. You could have a component who's sole purpose is to render the login form; one for a form for updating a user; another component who's sole purpose is for creating users; and then another component who's sole purpose is to delete a user.
-* It really is up to you how you build this project. I suggest writing down the flow you want to follow, and then writing down each individual piece you need for each step in the flow so that this process doesn't feel as overwhelming.
+[x] If you'd like, you can create multiple "view" components for your routes. You could have a component who's sole purpose is to render the login form; one for a form for updating a user; another component who's sole purpose is for creating users; and then another component who's sole purpose is to delete a user.
+[x] It really is up to you how you build this project. I suggest writing down the flow you want to follow, and then writing down each individual piece you need for each step in the flow so that this process doesn't feel as overwhelming.
 
 ## Stretch Problem
 
-* In the requirements for this project, we implemented a login POST operation, a GET operation, and a "add friend" POST operation. Add two more functions, one for making a PUT request, and the other for making a DELETE request.
+[x] In the requirements for this project, we implemented a login POST operation, a GET operation, and a "add friend" POST operation. Add two more functions, one for making a PUT request, and the other for making a DELETE request.
 * Style the friends list and the input field and make everything look nice.
 * Expand the number of properties that you put on each friend object. Feel free to remove the dummy data on the server or modify it in any way.
