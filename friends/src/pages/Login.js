@@ -11,6 +11,7 @@ const Login = () => {
         username: '',
         password: ''
     });
+    const [ isLoading, setIsLoading ] = useState(false);
 
     const [error, setError] = useState(null);
 
@@ -23,6 +24,7 @@ const Login = () => {
 
     const login = e => {
         e.preventDefault();
+        setIsLoading(true);
         if(credentials.username.length && credentials.password.length) {
             axios.post(`${baseURL}/login`, credentials)
                 .then(res => {
@@ -34,7 +36,8 @@ const Login = () => {
                 .catch(err => {
                     console.warn(err);
                     setError('Invalid credentials.');
-                });
+                })
+                .finally(() => setIsLoading(false));
             }
         else {
             setError('Username and password are required.');
@@ -56,7 +59,7 @@ const Login = () => {
                 value={credentials.password}
                 onChange={handleChange}
             />
-            <button type="submit">Log in</button>
+            <button type="submit" disabled={isLoading}>{isLoading ? 'Logging in...' : 'Log in'}</button>
         </form>
     );
 };
